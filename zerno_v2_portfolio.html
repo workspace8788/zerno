@@ -1,0 +1,423 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes lineW{from{width:0}to{width:100%}}
+@keyframes lineH{from{height:0}to{height:100%}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:1}}
+@keyframes barUp{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,0)}50%{box-shadow:0 0 20px 4px rgba(99,102,241,0.15)}}
+
+.z{font-family:var(--font-sans);background:#06060f;border-radius:12px;overflow:hidden}
+
+/* PRELOADER */
+.pre{background:#06060f;padding:70px 48px 60px;text-align:center;border-bottom:0.5px solid rgba(99,102,241,0.15)}
+.pre-orbit{width:48px;height:48px;border:1px solid rgba(99,102,241,0.2);border-radius:50%;margin:0 auto 28px;position:relative;animation:spin 3s linear infinite}
+.pre-orbit::after{content:'';position:absolute;width:6px;height:6px;background:#818cf8;border-radius:50%;top:-3px;left:50%;transform:translateX(-50%)}
+.pre-logo{font-size:52px;font-weight:500;color:#f1f5f9;letter-spacing:-0.04em;line-height:1;animation:fadeUp 0.8s ease both}
+.pre-logo span{color:#818cf8}
+.pre-sub{font-size:10px;letter-spacing:0.5em;color:rgba(129,140,248,0.5);text-transform:uppercase;margin-top:8px;animation:fadeUp 0.6s 0.2s ease both}
+.pre-track{width:180px;height:1px;background:rgba(99,102,241,0.15);margin:24px auto 0;overflow:hidden}
+.pre-fill{height:100%;background:linear-gradient(90deg,#6366f1,#818cf8);animation:lineW 2.2s 0.3s ease both}
+.pre-pct{font-size:11px;color:rgba(129,140,248,0.4);letter-spacing:0.3em;margin-top:10px;animation:pulse 1.5s infinite}
+
+/* TICKER */
+.ticker{background:rgba(99,102,241,0.08);border-top:0.5px solid rgba(99,102,241,0.2);border-bottom:0.5px solid rgba(99,102,241,0.2);padding:9px 0;overflow:hidden}
+.t-inner{display:flex;width:max-content;animation:ticker 20s linear infinite}
+.t-item{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(129,140,248,0.6);padding:0 28px;white-space:nowrap}
+.t-sep{color:rgba(99,102,241,0.3);padding:0 4px}
+
+/* HERO */
+.hero{padding:60px 48px 52px;animation:fadeUp 0.7s 0.4s ease both}
+.h-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.1);border:0.5px solid rgba(99,102,241,0.25);color:#818cf8;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;padding:7px 14px;margin-bottom:28px}
+.h-pulse{width:5px;height:5px;background:#818cf8;border-radius:50%;animation:pulse 1.5s infinite}
+.h1{font-size:54px;font-weight:500;color:#f1f5f9;letter-spacing:-0.04em;line-height:1.0;margin-bottom:32px;animation:fadeUp 0.7s 0.6s ease both}
+.h1 em{color:#818cf8;font-style:normal}
+.h1 .acc{color:#34d399;font-style:italic}
+.liners{margin-bottom:36px;display:flex;flex-direction:column;gap:0}
+.liner{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-left:1.5px solid rgba(99,102,241,0.2);margin-bottom:8px;animation:fadeUp 0.6s ease both}
+.liner:nth-child(1){animation-delay:0.8s;border-color:rgba(99,102,241,0.4)}
+.liner:nth-child(2){animation-delay:1.0s;border-color:rgba(52,211,153,0.3)}
+.liner:nth-child(3){animation-delay:1.2s;border-color:rgba(251,191,36,0.3)}
+.liner-icon{font-size:14px;color:#818cf8;flex-none;margin-top:1px}
+.liner-text{font-size:14px;color:rgba(241,245,249,0.55);line-height:1.6}
+.liner-text strong{font-weight:500;color:rgba(241,245,249,0.85)}
+.h-btns{display:flex;gap:12px;animation:fadeUp 0.6s 1.4s ease both}
+.btn-p{background:#6366f1;color:#fff;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;font-weight:500;padding:13px 26px;border:none;cursor:pointer}
+.btn-s{background:transparent;color:rgba(241,245,249,0.45);font-size:11px;letter-spacing:0.25em;text-transform:uppercase;padding:13px 26px;border:0.5px solid rgba(255,255,255,0.1);cursor:pointer}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.04)}
+.st{background:#0a0a18;padding:24px;text-align:center}
+.st-n{font-size:26px;font-weight:500;color:#818cf8;letter-spacing:-0.03em}
+.st-l{font-size:10px;color:rgba(241,245,249,0.25);letter-spacing:0.25em;text-transform:uppercase;margin-top:4px}
+
+/* SECTION HEADER */
+.sh{padding:48px 48px 0}
+.sh-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sh-line{width:16px;height:1px;background:#6366f1}
+.sh-tag{font-size:10px;letter-spacing:0.45em;text-transform:uppercase;color:#6366f1}
+.sh-title{font-size:26px;font-weight:500;color:#f1f5f9;letter-spacing:-0.02em;margin-bottom:8px}
+.sh-sub{font-size:13px;color:rgba(241,245,249,0.35);line-height:1.6;max-width:420px}
+
+/* PORTFOLIO */
+.portfolio{padding:32px 48px 48px;background:#06060f}
+.port-grid{display:flex;flex-direction:column;gap:16px;margin-top:24px}
+.port-card{background:#0d0d1f;border:0.5px solid rgba(99,102,241,0.12);overflow:hidden;position:relative;cursor:pointer;transition:border-color 0.3s}
+.port-card:hover{border-color:rgba(99,102,241,0.35)}
+.port-card::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:linear-gradient(90deg,#6366f1,#34d399);transition:width 0.5s ease}
+.port-card:hover::before{width:100%}
+.port-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.port-info{padding:32px 28px}
+.port-num{font-size:9px;letter-spacing:0.5em;color:rgba(99,102,241,0.4);margin-bottom:16px;text-transform:uppercase}
+.port-tag-row{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.port-tag{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;padding:4px 10px;border:0.5px solid rgba(99,102,241,0.25);color:#818cf8}
+.port-tag.green{border-color:rgba(52,211,153,0.25);color:#34d399}
+.port-tag.amber{border-color:rgba(251,191,36,0.2);color:#fbbf24}
+.port-title{font-size:18px;font-weight:500;color:#f1f5f9;margin-bottom:8px;line-height:1.3}
+.port-desc{font-size:12px;color:rgba(241,245,249,0.4);line-height:1.7;margin-bottom:16px}
+.port-feats{display:flex;flex-direction:column;gap:5px;margin-bottom:20px}
+.port-feat{display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(241,245,249,0.4)}
+.port-feat i{color:#6366f1;font-size:13px}
+.port-link{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#6366f1;border:0.5px solid rgba(99,102,241,0.3);padding:8px 16px;transition:all 0.3s}
+.port-link:hover{background:rgba(99,102,241,0.1)}
+.port-visual{background:#070714;display:flex;align-items:center;justify-content:center;padding:32px 20px;border-left:0.5px solid rgba(99,102,241,0.08)}
+.port-mock{width:100%;max-width:220px}
+.mock-bar{height:6px;background:rgba(99,102,241,0.15);border-radius:2px;margin-bottom:8px}
+.mock-bar.active{background:rgba(99,102,241,0.5);width:75%}
+.mock-row{display:flex;gap:6px;margin-bottom:6px}
+.mock-cell{height:22px;background:rgba(255,255,255,0.04);border-radius:2px;flex:1}
+.mock-cell.hi{background:rgba(99,102,241,0.12)}
+.mock-header{background:rgba(99,102,241,0.2);height:28px;border-radius:2px;margin-bottom:10px;display:flex;align-items:center;padding:0 10px;gap:6px}
+.mock-dot{width:5px;height:5px;border-radius:50%;background:#818cf8}
+.mock-dot.g{background:#34d399}
+.mock-dot.r{background:#f87171}
+.mock-label{font-size:10px;color:rgba(129,140,248,0.6);letter-spacing:0.15em}
+.mock-stat{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.mock-st{background:rgba(99,102,241,0.08);border:0.5px solid rgba(99,102,241,0.15);padding:8px;border-radius:2px;text-align:center}
+.mock-st-n{font-size:14px;font-weight:500;color:#818cf8}
+.mock-st-l{font-size:9px;color:rgba(241,245,249,0.3)}
+
+/* SERVICES */
+.services{background:#09091a;padding:0 48px 48px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.03);margin-top:24px}
+.svc{background:#09091a;padding:24px 20px;position:relative;overflow:hidden;transition:background 0.3s}
+.svc:hover{background:#0e0e24}
+.svc::after{content:'';position:absolute;bottom:0;left:0;height:1.5px;width:0;background:#6366f1;transition:width 0.4s}
+.svc:hover::after{width:100%}
+.svc-n{font-size:9px;letter-spacing:0.5em;color:rgba(99,102,241,0.3);margin-bottom:12px}
+.svc-i{font-size:20px;color:#818cf8;margin-bottom:10px}
+.svc-t{font-size:13px;font-weight:500;color:#f1f5f9;margin-bottom:6px}
+.svc-d{font-size:11px;color:rgba(241,245,249,0.32);line-height:1.65}
+
+/* AUTOMATION */
+.auto{padding:0 48px 48px;background:#06060f}
+.auto-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.ac{border:0.5px solid rgba(99,102,241,0.1);padding:22px 20px;position:relative;overflow:hidden;transition:border-color 0.3s}
+.ac:hover{border-color:rgba(99,102,241,0.3)}
+.ac::before{content:'';position:absolute;left:0;top:0;width:1.5px;height:0;background:#6366f1;transition:height 0.5s}
+.ac:hover::before{height:100%}
+.ac-i{font-size:18px;color:#6366f1;margin-bottom:10px}
+.ac-t{font-size:13px;font-weight:500;color:#f1f5f9;margin-bottom:5px}
+.ac-d{font-size:11px;color:rgba(241,245,249,0.32);line-height:1.6}
+.ac-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:#6366f1;border:0.5px solid rgba(99,102,241,0.2);padding:3px 8px;margin-top:10px}
+
+/* CHART */
+.chart-sec{padding:0 48px 48px;background:#09091a}
+.chart-box{background:#06060f;border:0.5px solid rgba(99,102,241,0.12);padding:28px;margin-top:24px}
+.chart-title{font-size:11px;color:rgba(241,245,249,0.3);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:24px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:90px}
+.bw{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.b{width:100%;background:#6366f1;transform-origin:bottom;animation:barUp 0.8s ease both}
+.b.dim{background:rgba(99,102,241,0.2)}
+.b:nth-child(1){animation-delay:0.1s}
+.bl{font-size:10px;color:rgba(241,245,249,0.25)}
+.chart-note{display:flex;align-items:center;gap:6px;margin-top:16px}
+.chart-dot{width:6px;height:6px;background:#34d399;border-radius:50%}
+.chart-note-t{font-size:10px;color:rgba(52,211,153,0.6);letter-spacing:0.2em}
+
+/* QUOTE */
+.quote{padding:44px 48px;background:rgba(99,102,241,0.08);border-top:0.5px solid rgba(99,102,241,0.15);border-bottom:0.5px solid rgba(99,102,241,0.15);text-align:center}
+.q-text{font-size:22px;font-weight:500;color:#f1f5f9;line-height:1.4;font-style:italic;font-family:var(--font-voice);max-width:520px;margin:0 auto 16px}
+.q-text span{color:#818cf8}
+.q-by{font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(241,245,249,0.25)}
+
+/* PROCESS */
+.proc{padding:48px;background:#06060f}
+.proc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:24px}
+.ps{border-top:0.5px solid rgba(99,102,241,0.15);padding:20px 16px 20px 0}
+.ps-n{font-size:9px;letter-spacing:0.4em;color:#6366f1;margin-bottom:10px}
+.ps-t{font-size:13px;font-weight:500;color:#f1f5f9;margin-bottom:5px}
+.ps-d{font-size:11px;color:rgba(241,245,249,0.3);line-height:1.6}
+
+/* CONTACT */
+.contact{background:#0d0d1f;padding:48px;border-top:0.5px solid rgba(99,102,241,0.1);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.c-h{font-size:30px;font-weight:500;color:#f1f5f9;letter-spacing:-0.03em;line-height:1.2;margin-bottom:6px}
+.c-h span{color:#818cf8}
+.c-sub{font-size:11px;color:rgba(241,245,249,0.25);letter-spacing:0.15em}
+.c-items{display:flex;flex-direction:column;gap:10px}
+.c-item{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.c-item i{color:#6366f1;font-size:14px}
+.c-item span{font-size:13px;color:rgba(241,245,249,0.45)}
+
+/* FOOTER */
+.footer{background:#040410;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid rgba(255,255,255,0.04)}
+.f-brand{font-size:16px;font-weight:500;color:#f1f5f9;letter-spacing:-0.02em}
+.f-brand span{color:#818cf8}
+.f-r{font-size:10px;color:rgba(241,245,249,0.15);letter-spacing:0.2em}
+</style>
+
+<div class="z">
+
+<div class="pre">
+  <div class="pre-orbit"></div>
+  <div class="pre-logo">ZERN<span>O</span></div>
+  <div class="pre-sub">Digital Growth Partners</div>
+  <div class="pre-track"><div class="pre-fill"></div></div>
+  <div class="pre-pct">Initialising experience...</div>
+</div>
+
+<div class="ticker">
+  <div class="t-inner">
+    <span class="t-item">Premium Websites</span><span class="t-sep">·</span>
+    <span class="t-item">Google Ads</span><span class="t-sep">·</span>
+    <span class="t-item">AI Integration</span><span class="t-sep">·</span>
+    <span class="t-item">Transport ERP</span><span class="t-sep">·</span>
+    <span class="t-item">Business Automation</span><span class="t-sep">·</span>
+    <span class="t-item">Custom Software</span><span class="t-sep">·</span>
+    <span class="t-item">Kill the Paperwork</span><span class="t-sep">·</span>
+    <span class="t-item">Premium Websites</span><span class="t-sep">·</span>
+    <span class="t-item">Google Ads</span><span class="t-sep">·</span>
+    <span class="t-item">AI Integration</span><span class="t-sep">·</span>
+    <span class="t-item">Transport ERP</span><span class="t-sep">·</span>
+    <span class="t-item">Business Automation</span><span class="t-sep">·</span>
+    <span class="t-item">Custom Software</span><span class="t-sep">·</span>
+    <span class="t-item">Kill the Paperwork</span><span class="t-sep">·</span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="h-badge"><div class="h-pulse"></div>We make businesses impossible to ignore</div>
+  <div class="h1">We build the<br/>digital engine<br/>your business<br/><em>deserves.</em></div>
+  <div class="liners">
+    <div class="liner">
+      <i class="ti ti-rocket liner-icon" aria-hidden="true"></i>
+      <div class="liner-text"><strong>Premium websites, Google Ads, and AI tools</strong> that turn your online presence into a revenue machine.</div>
+    </div>
+    <div class="liner">
+      <i class="ti ti-bolt liner-icon" aria-hidden="true"></i>
+      <div class="liner-text" style="color:rgba(241,245,249,0.5)"><strong style="color:rgba(241,245,249,0.8)">Your competitors are already online.</strong> The question is — are you winning?</div>
+    </div>
+    <div class="liner">
+      <i class="ti ti-file-off liner-icon" aria-hidden="true" style="color:#fbbf24"></i>
+      <div class="liner-text" style="color:rgba(241,245,249,0.5)">We turn <strong style="color:rgba(241,245,249,0.8)">paperwork and manual work into smart software</strong> — so your team focuses on growth, not registers.</div>
+    </div>
+  </div>
+  <div class="h-btns">
+    <button class="btn-p"><i class="ti ti-arrow-right" aria-hidden="true"></i> Start growing</button>
+    <button class="btn-s">See our work</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="st"><div class="st-n">3</div><div class="st-l">Live products</div></div>
+  <div class="st"><div class="st-n">48hr</div><div class="st-l">Website delivery</div></div>
+  <div class="st"><div class="st-n">3x</div><div class="st-l">Avg lead growth</div></div>
+  <div class="st"><div class="st-n">0</div><div class="st-l">Generic templates</div></div>
+</div>
+
+<div class="sh" style="background:#06060f"><div class="sh-row"><div class="sh-line"></div><div class="sh-tag">Our work</div></div><div class="sh-title">Live products we built</div><div class="sh-sub">Real software, real clients, real impact — all deployed and running in production.</div></div>
+
+<div class="portfolio">
+  <div class="port-grid">
+
+    <div class="port-card">
+      <div class="port-inner">
+        <div class="port-info">
+          <div class="port-num">Project 01</div>
+          <div class="port-tag-row">
+            <span class="port-tag">Transport ERP</span>
+            <span class="port-tag green">Live</span>
+            <span class="port-tag amber">SaaS</span>
+          </div>
+          <div class="port-title">ReliableLogi — Cloud Transport ERP</div>
+          <div class="port-desc">A full cloud-based Transport ERP that digitises the complete logistics workflow — from booking to delivery. Replaces registers, Excel sheets, and manual billing with one powerful platform.</div>
+          <div class="port-feats">
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Bilty (LR) creation and shipment tracking</div>
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Multi-branch with role-based access</div>
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Auto invoice and billing generation</div>
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Real-time reports and PDF exports</div>
+          </div>
+          <a href="https://reliablelogi.com/users/sign_in" class="port-link" target="_blank"><i class="ti ti-external-link" aria-hidden="true"></i>reliablelogi.com</a>
+        </div>
+        <div class="port-visual">
+          <div class="port-mock">
+            <div class="mock-header"><div class="mock-dot r"></div><div class="mock-dot" style="background:#fbbf24"></div><div class="mock-dot g"></div><div class="mock-label" style="margin-left:4px">ReliableLogi ERP</div></div>
+            <div class="mock-stat">
+              <div class="mock-st"><div class="mock-st-n" style="color:#34d399">142</div><div class="mock-st-l">Shipments</div></div>
+              <div class="mock-st"><div class="mock-st-n">₹2.4L</div><div class="mock-st-l">Pending</div></div>
+            </div>
+            <div class="mock-bar active" style="width:90%;height:4px;margin-bottom:6px"></div>
+            <div class="mock-row"><div class="mock-cell hi"></div><div class="mock-cell"></div><div class="mock-cell"></div></div>
+            <div class="mock-row"><div class="mock-cell"></div><div class="mock-cell hi"></div><div class="mock-cell"></div></div>
+            <div class="mock-row"><div class="mock-cell hi"></div><div class="mock-cell"></div><div class="mock-cell hi"></div></div>
+            <div class="mock-row"><div class="mock-cell"></div><div class="mock-cell hi"></div><div class="mock-cell"></div></div>
+            <div style="margin-top:10px;display:flex;gap:4px">
+              <div style="flex:1;height:36px;background:rgba(99,102,241,0.15);border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font-size:9px;color:#818cf8;letter-spacing:0.2em">BILTY</span></div>
+              <div style="flex:1;height:36px;background:rgba(52,211,153,0.08);border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font-size:9px;color:#34d399;letter-spacing:0.2em">TRACK</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="port-card">
+      <div class="port-inner">
+        <div class="port-info">
+          <div class="port-num">Project 02</div>
+          <div class="port-tag-row">
+            <span class="port-tag">Architecture</span>
+            <span class="port-tag green">Live</span>
+            <span class="port-tag" style="border-color:rgba(251,191,36,0.25);color:#fbbf24">Luxury</span>
+          </div>
+          <div class="port-title">MS Architects — Luxury Studio Website</div>
+          <div class="port-desc">An Awwwards-level cinematic website for a luxury architecture and interiors studio. Dark luxury theme, GSAP horizontal scroll, Lenis smooth scroll, animated preloader, and custom cursor — built to impress clients in under 5 seconds.</div>
+          <div class="port-feats">
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Cinematic GSAP scroll animations</div>
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Custom cursor and magnetic buttons</div>
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Horizontal project showcase</div>
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>GitHub Pages deployed with custom domain</div>
+          </div>
+          <a href="https://www.msarchitectss.com" class="port-link" target="_blank"><i class="ti ti-external-link" aria-hidden="true"></i>msarchitectss.com</a>
+        </div>
+        <div class="port-visual">
+          <div class="port-mock">
+            <div class="mock-header" style="background:rgba(184,155,114,0.15)"><div class="mock-dot r"></div><div class="mock-dot" style="background:#fbbf24"></div><div class="mock-dot g"></div><div class="mock-label" style="margin-left:4px;color:rgba(184,155,114,0.6)">msarchitectss.com</div></div>
+            <div style="background:#0a0a0a;padding:14px;border-radius:2px;margin-bottom:6px">
+              <div style="font-size:16px;font-weight:500;color:#F5F5F5;letter-spacing:-0.02em;line-height:1.1;font-family:var(--font-voice)">The Signature<br/><em style="color:#B89B72">of Luxury.</em></div>
+              <div style="width:40px;height:1px;background:#B89B72;margin-top:10px"></div>
+            </div>
+            <div class="mock-row"><div class="mock-cell" style="background:rgba(184,155,114,0.08)"></div><div class="mock-cell"></div></div>
+            <div class="mock-row" style="margin-top:6px"><div class="mock-cell"></div><div class="mock-cell" style="background:rgba(184,155,114,0.08)"></div><div class="mock-cell"></div></div>
+            <div style="margin-top:8px;display:flex;gap:4px">
+              <div style="flex:2;height:28px;background:rgba(184,155,114,0.2);border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font-size:9px;color:#B89B72;letter-spacing:0.2em">PROJECTS</span></div>
+              <div style="flex:1;height:28px;background:rgba(255,255,255,0.03);border-radius:2px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="port-card">
+      <div class="port-inner">
+        <div class="port-info">
+          <div class="port-num">Project 03</div>
+          <div class="port-tag-row">
+            <span class="port-tag">Logistics</span>
+            <span class="port-tag green">Live</span>
+            <span class="port-tag" style="border-color:rgba(251,191,36,0.25);color:#fbbf24">Business</span>
+          </div>
+          <div class="port-title">Anam Transport Service — Business Website</div>
+          <div class="port-desc">A professional business website for a transport and logistics company based in Akola — showcasing services, routes, and client trust signals to attract B2B clients online.</div>
+          <div class="port-feats">
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Professional logistics brand presence</div>
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Service and route showcase</div>
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Mobile responsive design</div>
+            <div class="port-feat"><i class="ti ti-check" aria-hidden="true"></i>Lead generation focused layout</div>
+          </div>
+          <a href="https://anamtransportservice.com" class="port-link" target="_blank"><i class="ti ti-external-link" aria-hidden="true"></i>anamtransportservice.com</a>
+        </div>
+        <div class="port-visual">
+          <div class="port-mock">
+            <div class="mock-header" style="background:rgba(52,211,153,0.1)"><div class="mock-dot r"></div><div class="mock-dot" style="background:#fbbf24"></div><div class="mock-dot g"></div><div class="mock-label" style="margin-left:4px;color:rgba(52,211,153,0.5)">anamtransport.com</div></div>
+            <div style="background:#050f0a;padding:14px;border-radius:2px;margin-bottom:6px">
+              <div style="font-size:13px;font-weight:500;color:#f1f5f9;line-height:1.3">Anam Transport<br/><span style="color:#34d399">Service</span></div>
+              <div style="font-size:9px;color:rgba(241,245,249,0.3);margin-top:6px;letter-spacing:0.2em">AKOLA · MAHARASHTRA</div>
+            </div>
+            <div class="mock-row"><div class="mock-cell" style="background:rgba(52,211,153,0.08)"></div><div class="mock-cell"></div><div class="mock-cell"></div></div>
+            <div class="mock-row" style="margin-top:6px"><div class="mock-cell"></div><div class="mock-cell" style="background:rgba(52,211,153,0.05)"></div></div>
+            <div style="margin-top:8px;height:28px;background:rgba(52,211,153,0.15);border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font-size:9px;color:#34d399;letter-spacing:0.2em">GET A QUOTE</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="sh" style="background:#09091a"><div class="sh-row"><div class="sh-line"></div><div class="sh-tag">Services</div></div><div class="sh-title">Everything you need to grow</div><div class="sh-sub">From your first website to full AI-powered business systems.</div></div>
+<div class="services">
+  <div class="svc-grid">
+    <div class="svc"><div class="svc-n">01</div><div class="svc-i"><i class="ti ti-world" aria-hidden="true"></i></div><div class="svc-t">Premium websites</div><div class="svc-d">Cinematic animated sites that make clients trust you in 5 seconds flat.</div></div>
+    <div class="svc"><div class="svc-n">02</div><div class="svc-i"><i class="ti ti-ad-2" aria-hidden="true"></i></div><div class="svc-t">Google and Meta Ads</div><div class="svc-d">Performance campaigns with real lead tracking and monthly ROI reports.</div></div>
+    <div class="svc"><div class="svc-n">03</div><div class="svc-i"><i class="ti ti-robot" aria-hidden="true"></i></div><div class="svc-t">AI integration</div><div class="svc-d">WhatsApp bots, AI assistants, and smart workflows built into your business.</div></div>
+    <div class="svc"><div class="svc-n">04</div><div class="svc-i"><i class="ti ti-settings-automation" aria-hidden="true"></i></div><div class="svc-t">Business automation</div><div class="svc-d">Any repetitive task your team does manually — we can automate it.</div></div>
+    <div class="svc"><div class="svc-n">05</div><div class="svc-i"><i class="ti ti-database" aria-hidden="true"></i></div><div class="svc-t">Custom ERP and software</div><div class="svc-d">Any problem running on paper or Excel — we build software that solves it permanently.</div></div>
+    <div class="svc"><div class="svc-n">06</div><div class="svc-i"><i class="ti ti-chart-bar" aria-hidden="true"></i></div><div class="svc-t">SEO and analytics</div><div class="svc-d">Rank on Google and get a clear monthly picture of what is driving revenue.</div></div>
+  </div>
+</div>
+
+<div class="sh" style="background:#06060f"><div class="sh-row"><div class="sh-line"></div><div class="sh-tag">Kill the paperwork</div></div><div class="sh-title">Replace manual work with software</div><div class="sh-sub">If your business runs on registers, Excel, or paper — we can build you a system that does it better, faster, and without errors.</div></div>
+<div class="auto">
+  <div class="auto-grid">
+    <div class="ac"><div class="ac-i"><i class="ti ti-truck" aria-hidden="true"></i></div><div class="ac-t">Transport and logistics ERP</div><div class="ac-d">Bilty, LR, invoice, route, vehicle, driver — complete transport workflow in one cloud system.</div><div class="ac-badge"><i class="ti ti-check" aria-hidden="true"></i>Already built and live</div></div>
+    <div class="ac"><div class="ac-i"><i class="ti ti-file-invoice" aria-hidden="true"></i></div><div class="ac-t">Billing and invoicing</div><div class="ac-d">Stop creating invoices by hand. Auto-generate, email, and track every payment digitally.</div><div class="ac-badge"><i class="ti ti-bolt" aria-hidden="true"></i>Replaces manual billing</div></div>
+    <div class="ac"><div class="ac-i"><i class="ti ti-package" aria-hidden="true"></i></div><div class="ac-t">Inventory management</div><div class="ac-d">Live stock levels, auto low-stock alerts, and supplier tracking — no more lost items.</div><div class="ac-badge"><i class="ti ti-bolt" aria-hidden="true"></i>Replaces stock registers</div></div>
+    <div class="ac"><div class="ac-i"><i class="ti ti-users" aria-hidden="true"></i></div><div class="ac-t">Staff and attendance</div><div class="ac-d">Digital attendance, auto payroll calculation, leave management — no paper register needed.</div><div class="ac-badge"><i class="ti ti-bolt" aria-hidden="true"></i>Replaces attendance book</div></div>
+  </div>
+</div>
+
+<div class="sh" style="background:#09091a"><div class="sh-row"><div class="sh-line"></div><div class="sh-tag">Results</div></div><div class="sh-title">What growth looks like</div></div>
+<div class="chart-sec">
+  <div class="chart-box">
+    <div class="chart-title">Monthly leads — before and after Zerno</div>
+    <div class="bars">
+      <div class="bw"><div class="b dim" style="height:18px"></div><div class="bl">Jan</div></div>
+      <div class="bw"><div class="b dim" style="height:24px"></div><div class="bl">Feb</div></div>
+      <div class="bw"><div class="b dim" style="height:16px"></div><div class="bl">Mar</div></div>
+      <div class="bw"><div class="b" style="height:52px;animation-delay:0.3s"></div><div class="bl">Apr</div></div>
+      <div class="bw"><div class="b" style="height:68px;animation-delay:0.4s"></div><div class="bl">May</div></div>
+      <div class="bw"><div class="b" style="height:86px;animation-delay:0.5s"></div><div class="bl">Jun</div></div>
+    </div>
+    <div class="chart-note"><div class="chart-dot"></div><div class="chart-note-t">Zerno partnership started — April</div></div>
+  </div>
+</div>
+
+<div class="quote">
+  <div class="q-text">"We don't just build websites. We build <span>digital businesses</span> that outlast trends."</div>
+  <div class="q-by">Zerno — Digital Growth Partners</div>
+</div>
+
+<div class="proc">
+  <div class="sh-row"><div class="sh-line"></div><div class="sh-tag">Process</div></div>
+  <div style="font-size:26px;font-weight:500;color:#f1f5f9;margin-bottom:8px">How we work</div>
+  <div class="proc-row">
+    <div class="ps"><div class="ps-n">01</div><div class="ps-t">Free audit</div><div class="ps-d">We analyse your online presence and find where you are losing customers.</div></div>
+    <div class="ps"><div class="ps-n">02</div><div class="ps-t">Growth plan</div><div class="ps-d">Custom strategy with timeline, budget, and expected outcomes.</div></div>
+    <div class="ps"><div class="ps-n">03</div><div class="ps-t">We build</div><div class="ps-d">Website, ads, software — executed end to end by our team.</div></div>
+    <div class="ps"><div class="ps-n">04</div><div class="ps-t">You grow</div><div class="ps-d">Monthly reports, ongoing optimisation, and continuous improvement.</div></div>
+  </div>
+</div>
+
+<div class="contact">
+  <div>
+    <div class="c-h">Ready to<br/><span>dominate online?</span></div>
+    <div class="c-sub">Free audit — no commitment needed</div>
+  </div>
+  <div class="c-items">
+    <div class="c-item"><i class="ti ti-phone" aria-hidden="true"></i><span>+91 7507787555</span></div>
+    <div class="c-item"><i class="ti ti-mail" aria-hidden="true"></i><span>syedu337@gmail.com</span></div>
+    <div class="c-item"><i class="ti ti-map-pin" aria-hidden="true"></i><span>Maharashtra, India</span></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="f-brand">ZERN<span>O</span></div>
+  <div class="f-r">Digital Growth Partners · 2026</div>
+</div>
+
+</div>
