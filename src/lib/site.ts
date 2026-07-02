@@ -6,12 +6,12 @@ export const siteConfig = {
   url: "https://zernotechnologies.com",
   ogImage: "/og-image.svg",
   contact: {
-    phone: "+91 9172826776",
-    phoneHref: "tel:+919172826776",
+    phone: "+91 7887460533",
+    phoneHref: "tel:+917887460533",
     email: "info@zernotechnologies.com",
     emailHref: "mailto:info@zernotechnologies.com",
     whatsappHref:
-      "https://wa.me/919172826776?text=Hi%20ZERNO%20Technologies%2C%20I%20want%20to%20book%20a%20free%20consultation.",
+      "https://wa.me/917887460533?text=Hi%20ZERNO%20Technologies%2C%20I%20want%20to%20book%20a%20free%20consultation.",
     location: "Maharashtra, India",
   },
   social: {
