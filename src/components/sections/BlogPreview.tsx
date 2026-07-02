@@ -11,8 +11,8 @@ export function BlogPreview() {
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           tag="Insights"
-          title="Software, SEO, AI, and automation authority roadmap"
-          subtitle="A production blog strategy for ranking on high-intent searches around custom software development, ERP, SaaS, AI automation, SEO, Google Ads, and business automation."
+          title="Insights for businesses ready to grow"
+          subtitle="Practical thinking on custom software, ERP, SaaS, AI automation, SEO, Google Ads, and business automation for founders and business owners."
         />
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -55,16 +55,16 @@ export function BlogPreview() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
               <span className="text-xs tracking-[0.25em] uppercase text-accent-light">
-                Recommended Blog Strategy
+                Topics We Help Businesses Navigate
               </span>
               <h2 className="font-display text-2xl sm:text-3xl text-white mt-3">
-                50 high-intent article ideas
+                A practical knowledge library for digital growth
               </h2>
             </div>
             <p className="text-sm text-white/40 max-w-xl">
-              These topics are designed to build topical authority naturally
-              across software development, ERP, AI automation, SEO, Google Ads,
-              and location-based service searches.
+              From choosing the right software partner to planning ERP, AI,
+              SEO, and Google Ads, these are the questions growing companies
+              should understand before investing in digital systems.
             </p>
           </div>
 
