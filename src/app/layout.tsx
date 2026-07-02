@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { Marquee } from "@/components/ui/Marquee";
 import { siteConfig } from "@/lib/site";
-import { blogStrategy, faqs, portfolio, products, services, tickerItems } from "@/lib/data";
+import { faqs, portfolio, products, services, tickerItems } from "@/lib/data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -346,17 +346,6 @@ const breadcrumbJsonLd = {
   ],
 };
 
-const blogStrategyJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "ZERNO Technologies blog strategy",
-  itemListElement: blogStrategy.map((topic, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    name: topic,
-  })),
-};
-
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -432,12 +421,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(breadcrumbJsonLd),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(blogStrategyJsonLd),
           }}
         />
       </head>
