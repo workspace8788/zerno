@@ -10,6 +10,8 @@ export const siteConfig = {
     phoneHref: "tel:+919172826776",
     email: "info@zernotechnologies.com",
     emailHref: "mailto:info@zernotechnologies.com",
+    whatsappHref:
+      "https://wa.me/919172826776?text=Hi%20ZERNO%20Technologies%2C%20I%20want%20to%20book%20a%20free%20consultation.",
     location: "Maharashtra, India",
   },
   social: {

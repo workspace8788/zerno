@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2";
 import { Button } from "@/components/ui/Button";
-import { navLinks } from "@/lib/site";
+import { navLinks, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -72,7 +72,12 @@ export function Navbar() {
             </div>
 
             <div className="hidden lg:flex items-center gap-3">
-              <Button href="#contact" variant="primary" size="sm">
+              <Button
+                href={siteConfig.contact.whatsappHref}
+                external
+                variant="primary"
+                size="sm"
+              >
                 Book Free Consultation
               </Button>
             </div>
@@ -121,7 +126,8 @@ export function Navbar() {
                 </Link>
               ))}
               <Button
-                href="#contact"
+                href={siteConfig.contact.whatsappHref}
+                external
                 variant="primary"
                 className="mt-4"
                 onClick={() => setMobileOpen(false)}

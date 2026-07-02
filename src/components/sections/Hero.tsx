@@ -5,6 +5,7 @@ import { HiOutlineArrowRight, HiOutlineSparkles } from "react-icons/hi2";
 import { GradientOrb } from "@/components/effects/AuroraBackground";
 import { Button } from "@/components/ui/Button";
 import { stats } from "@/lib/data";
+import { siteConfig } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -58,7 +59,12 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.65 }}
             className="flex flex-col sm:flex-row gap-4 mb-16"
           >
-            <Button href="#contact" variant="primary" size="lg">
+            <Button
+              href={siteConfig.contact.whatsappHref}
+              external
+              variant="primary"
+              size="lg"
+            >
               Book Free Consultation
               <HiOutlineArrowRight className="w-4 h-4" />
             </Button>

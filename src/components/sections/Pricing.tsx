@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { consultationBenefits } from "@/lib/data";
+import { siteConfig } from "@/lib/site";
 
 export function Pricing() {
   return (
@@ -52,7 +53,12 @@ export function Pricing() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button href="#contact" variant="primary" size="lg">
+                <Button
+                  href={siteConfig.contact.whatsappHref}
+                  external
+                  variant="primary"
+                  size="lg"
+                >
                   Book Free Consultation
                   <HiOutlineArrowRight className="w-4 h-4" />
                 </Button>

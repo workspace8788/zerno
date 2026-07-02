@@ -59,6 +59,7 @@ export function Button({
           target="_blank"
           rel="noopener noreferrer"
           className={classes}
+          onClick={onClick}
           whileHover={{ y: -1 }}
           whileTap={{ scale: 0.98 }}
         >
