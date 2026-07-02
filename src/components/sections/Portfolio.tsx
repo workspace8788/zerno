@@ -109,11 +109,42 @@ function ProjectCard({
 
           <div className="glass rounded-xl p-4">
             <div className="text-[10px] tracking-[0.18em] uppercase text-white/30 mb-2">
+              Problem
+            </div>
+            <p className="text-sm text-white/50 leading-relaxed mb-4">
+              {project.problem}
+            </p>
+            <div className="text-[10px] tracking-[0.18em] uppercase text-white/30 mb-2">
+              Solution
+            </div>
+            <p className="text-sm text-white/50 leading-relaxed">
+              {project.solution}
+            </p>
+          </div>
+
+          <div className="glass rounded-xl p-4">
+            <div className="text-[10px] tracking-[0.18em] uppercase text-white/30 mb-2">
               Business impact
             </div>
             <p className="text-sm text-white/55 leading-relaxed">
               {project.impact}
             </p>
+          </div>
+
+          <div>
+            <div className="text-[10px] tracking-[0.18em] uppercase text-white/30 mb-3">
+              Search focus
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.keywords.map((keyword) => (
+                <span
+                  key={keyword}
+                  className="text-[11px] px-3 py-1 rounded-full border border-accent/15 text-accent-light/70"
+                >
+                  {keyword}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="flex items-center justify-between gap-4">

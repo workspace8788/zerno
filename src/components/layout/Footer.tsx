@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/[0.06] bg-black/40">
       <div className="section-padding !py-16 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
               <span className="font-display text-2xl font-semibold tracking-tight text-white">
@@ -32,6 +32,28 @@ export function Footer() {
                     className="text-sm text-white/40 hover:text-white transition-colors"
                   >
                     {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-medium text-white mb-4">Services</h3>
+            <ul className="space-y-3">
+              {[
+                ["Custom Software", "#custom-software-development-company"],
+                ["ERP Development", "#erp-software-development-company"],
+                ["AI Automation", "#ai-automation-company"],
+                ["SEO Services", "#technical-seo-services"],
+                ["Google Ads", "#google-ads-agency"],
+              ].map(([label, href]) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-sm text-white/40 hover:text-white transition-colors"
+                  >
+                    {label}
                   </Link>
                 </li>
               ))}

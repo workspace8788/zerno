@@ -1,0 +1,19 @@
+{
+  "name": "ZERNO Technologies",
+  "short_name": "ZERNO",
+  "description": "Custom software, ERP, SaaS, AI automation, SEO, Google Ads, and business automation for growing companies in India.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#030014",
+  "theme_color": "#030014",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "technology"]
+}

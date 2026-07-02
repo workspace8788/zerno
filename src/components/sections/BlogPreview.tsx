@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { HiOutlineArrowRight, HiOutlineClock } from "react-icons/hi2";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { blogPosts } from "@/lib/data";
+import { blogPosts, blogStrategy } from "@/lib/data";
 
 export function BlogPreview() {
   return (
@@ -11,8 +11,8 @@ export function BlogPreview() {
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           tag="Insights"
-          title="From the ZERNO journal"
-          subtitle="Perspectives on software, SEO, AI, and digital transformation for growth-focused businesses."
+          title="Software, SEO, AI, and automation authority roadmap"
+          subtitle="A production blog strategy for ranking on high-intent searches around custom software development, ERP, SaaS, AI automation, SEO, Google Ads, and business automation."
         />
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -49,6 +49,40 @@ export function BlogPreview() {
               </div>
             </motion.article>
           ))}
+        </div>
+
+        <div className="mt-16 glass rounded-2xl p-6 sm:p-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+            <div>
+              <span className="text-xs tracking-[0.25em] uppercase text-accent-light">
+                Recommended Blog Strategy
+              </span>
+              <h2 className="font-display text-2xl sm:text-3xl text-white mt-3">
+                50 high-intent article ideas
+              </h2>
+            </div>
+            <p className="text-sm text-white/40 max-w-xl">
+              These topics are designed to build topical authority naturally
+              across software development, ERP, AI automation, SEO, Google Ads,
+              and location-based service searches.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {blogStrategy.map((topic, index) => (
+              <div
+                key={topic}
+                className="flex items-start gap-3 rounded-xl bg-white/[0.025] border border-white/[0.05] p-4"
+              >
+                <span className="text-[10px] font-mono text-accent-light/70 shrink-0 pt-1">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-sm text-white/60 leading-relaxed">
+                  {topic}
+                </h3>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

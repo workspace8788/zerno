@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "ZERNO Technologies",
-  tagline: "Premium Digital Transformation",
+  tagline: "Custom Software, ERP, AI Automation, SEO, and Google Ads",
   description:
-    "ZERNO Technologies builds enterprise-grade software, AI automation, and premium digital products that help businesses grow online. Custom ERP, SaaS, websites, and performance marketing.",
+    "ZERNO Technologies is a custom software development company in India building premium websites, ERP software, SaaS products, AI automation, SEO, Google Ads, and business automation for growing companies.",
   url: "https://zernotechnologies.com",
   ogImage: "/og-image.svg",
   contact: {
